@@ -1,3 +1,5 @@
+
+
 // computer.js
 
 import { fetchComputers } from "./api.js";
@@ -7,7 +9,7 @@ const computerPriceElement = document.getElementById("computerPrice");
 const computerDescriptionElement = document.getElementById("computerDescription");
 const computerFeaturesElement = document.getElementById("computerFeatures");
 const computerImageElement = document.getElementById("computerImage");
-const laptopSelectElement = document.getElementById("laptopSelect");
+const computerSelectElement = document.getElementById("computerSelect");
 
 let computer = {
   id: 0,
@@ -37,6 +39,10 @@ function updateComputerUI() {
     featureElement.textContent = feature;
     computerFeaturesElement.appendChild(featureElement);
   });
+
+  if(computer.features.length > 0){
+    document.querySelector(".computer-features-title").removeAttribute("hidden");
+  }
 }
 
 function setComputer(newComputer) {  
@@ -46,22 +52,22 @@ function setComputer(newComputer) {
   computer.price = newComputer.price
   computer.description = newComputer.description
   computer.features = newComputer.specs
-  computer.image = newComputer.image 
+  computer.image = `https://hickory-quilled-actress.glitch.me/${newComputer.image}` 
 }
 
-function laptopOptions(computers) {
+function computerOptions(computers) {
   computers.forEach((computer) => {
     const optionElement = document.createElement("option");
     optionElement.value = computer.id;
     optionElement.textContent = computer.title;
-    laptopSelectElement.appendChild(optionElement);
+    computerSelectElement.appendChild(optionElement);
   });
 }
 
 fetchComputers()
   .then((result) => {
     data = result; 
-    laptopOptions(data);
+    computerOptions(data);
   })
   .catch((error) => {
     console.error("Error fetching computers:", error);
@@ -69,14 +75,13 @@ fetchComputers()
 
 
 
-laptopSelectElement.addEventListener("change", (event) => {
+computerSelectElement.addEventListener("change", (event) => {
     const selectedComputer = data.find(item => item.id === parseInt(event.target.value))
     if(selectedComputer != null || selectedComputer != undefined){
         setComputer(selectedComputer)
         console.log(computer)
         updateComputerUI()
     }
-
 })
 
 
