@@ -29,6 +29,11 @@ function handleWork() {
 
 function handleTransfer() {
 
+    if(payBalance<=0){
+        alert("You have no money, go work")
+        return;
+    }
+
     if(getAmountOfLoan() > 0){
         const newBankBalanceValue = getBankBalance() + payBalance*0.9
         const newLoanValue = getAmountOfLoan() - payBalance*0.1
@@ -37,6 +42,7 @@ function handleTransfer() {
         setBankBalance(newBankBalanceValue)
 
         if(newLoanValue < 0){
+            document.querySelector(".repayLoan-button").setAttribute("hidden","");
             setAmountOfLoan(0)
         }
     }
@@ -53,6 +59,11 @@ function handleTransfer() {
 
 function handleRepayLoan() {
     const newLoanValue = getAmountOfLoan() - payBalance
+
+    if(payBalance<=0){
+        alert("You have no money, go work")
+        return;
+    }
 
     if(newLoanValue > 0){
         payBalance = 0;
