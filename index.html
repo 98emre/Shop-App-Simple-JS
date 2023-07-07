@@ -16,7 +16,11 @@
     <script src="./computer.js" type="module"></script>
 </head>
 
-<body>
+<body> 
+
+    <div class="div-1">
+        <h1 class="headTitle">Tech Shop</h1>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -42,21 +46,33 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="selectLaptop-container">
                     <h3>Laptops</h3>
-                    <select id="laptopSelect" class="form-control form-control-sm">
+                    <select id="computerSelect" class="form-control form-control-sm">
                         <option hidden >Select a laptop</option>
                     </select>
-                    
+
+                    <br/>
+                    <h5 hidden class= "computer-features-title">Features</h5>
                     <p id="computerFeatures"></p>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="bank-container">
-                    <h3><span id="computerTitle"></span></h3>
-                    <p><span id="computerDescription"> </span></p>
-                    <p><span id="computerPrice"></span> Kr</p>
-                    <p><img id="computerImage" src="" alt="No Image"></p>
-                    <button class="transferToBank-button">Buy Now</button>
+            <div class="col-lg-16 col-sm-16">
+                <div class="computer-container">
+                    
+                    <div class="computer-image-container">
+                        <img id="computerImage" class="computer-image" src="" alt="Missing a image">
+                    </div>
+
+                    <div class="computer-details">
+                        <h3><span id="computerTitle"></span></h3>
+                        <p id="computerDescription"></p>
+                    </div>
+
+                    <div >
+                        <h5><span id="computerPrice"></span> Kr</h5>
+                    </div>
+                    
+                    <button class="computer-button">BUY NOW</button>                    
                 </div>
             </div>
 
