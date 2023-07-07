@@ -1,8 +1,10 @@
 
 // Bank.js
 
-let bankBalanceElement = document.getElementById("bankBalance");
-let amountOfLoanElement = document.getElementById("amountOfLoan");
+const bankBalanceElement = document.getElementById("bankBalance");
+const amountOfLoanElement = document.getElementById("amountOfLoan");
+const btnGetLoanElement = document.getElementById("btn-getLoan")
+
 let amountOfLoan = 0;
 let bankBalance = 0;
 
