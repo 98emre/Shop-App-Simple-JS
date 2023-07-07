@@ -70,7 +70,9 @@
     border: 1px solid #ccc; 
     text-align: left; 
     margin-top: 20px; 
-}
+    display: flex;
+    align-items: center;
+    justify-content: space-between;}
 
 .computer-image {
     width: 200px; 
@@ -81,8 +83,9 @@
 .computer-button {
     background-color: #30cbfa; 
     border: 1px solid #ccc; 
-    padding: 5px; 
+    padding: 10px; 
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 .computer-features-title {
@@ -101,5 +104,6 @@
   }
   
   .computer-details {
-    flex: 1;
+    margin-left: 20px;
+    margin-right: 20px;
   }
