@@ -42,15 +42,24 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="selectLaptop-container">
                     <h3>Laptops</h3>
-                    <select class="form-control form-control-sm">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <select id="laptopSelect" class="form-control form-control-sm">
+                        <option hidden >Select a laptop</option>
                     </select>
+                    
+                    <p id="computerFeatures"></p>
                 </div>
             </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="bank-container">
+                    <h3><span id="computerTitle"></span></h3>
+                    <p><span id="computerDescription"> </span></p>
+                    <p><span id="computerPrice"></span> Kr</p>
+                    <p><img id="computerImage" src="" alt="No Image"></p>
+                    <button class="transferToBank-button">Buy Now</button>
+                </div>
+            </div>
+
         </div>
     </div>    
 </body>
