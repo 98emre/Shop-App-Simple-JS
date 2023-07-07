@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Shops</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+
+    <script src="./bank.js" type="module"></script>
+    <script src="./work.js" type="module"></script>
+    <script src="./api.js" type="module"></script>
+    <script src="./computer.js" type="module"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="bank-container">
+                    <h3>Joe Banker</h3>
+                    <p>Balance: <span id="bankBalance"></span> Kr</p>
+                    <p>Loan: <span id="amountOfLoan"></span></p>
+                    <button id="loanButton" class="bank-button">Get a loan</button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="bank-container">
+                    <h3>Work</h3>
+                    <p>Pay: <span id="payBalance"></span> Kr</p>
+                    <button id="transferButton" class="transferToBank-button">Bank</button>
+                    <button id="workButton" class="work-button">Work</button>
+                    <button id="repayLoanButton" class="repayLoan-button" hidden>Repay Loan</button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="selectLaptop-container">
+                    <h3>Laptops</h3>
+                    <select class="form-control form-control-sm">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { fetchComputers } from './api.js';
+      
+        // Anropa fetchComputers-funktionen och logga resultatet
+        fetchComputers()
+          .then((computers) => {
+            console.log('Fetched computers:', computers);
+          })
+          .catch((error) => {
+            console.error('Error fetching computers:', error);
+          });
+      </script>
+      
+</body>
+
+</html>
