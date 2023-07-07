@@ -1,0 +1,55 @@
+
+
+.bank-container {
+    background-color: #f8f9fa; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    margin-top: 20px; 
+}
+
+.bank-button {
+    background-color: #109717; 
+    border: 1px solid #ccc; 
+    margin-left: 20px; 
+}
+
+
+.work-container {
+    background-color: #f8f9fa; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    margin-top: 20px; 
+}
+
+.transferToBank-button {
+    background-color: #cbeb3f; 
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.work-button {
+    background-color: #288eee; 
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    margin-left: 20px;
+}
+
+
+.repayLoan-button {
+    background-color: #f7433c; 
+    border: 1px solid #ccc; 
+    padding: 5px; 
+    margin-left: 20px;
+}
+
+.selectLaptop-container {
+    background-color: #f8f9fa; 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    margin-top: 20px; 
+}
