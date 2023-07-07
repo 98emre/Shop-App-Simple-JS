@@ -66,9 +66,7 @@ function getLoan() {
 
 
 
-
-let loanButton = document.querySelector("#loanButton");
-loanButton.addEventListener("click", getLoan);
+btnGetLoanElement.addEventListener("click", getLoan);
 
 export { getAmountOfLoan, setAmountOfLoan, getBankBalance, setBankBalance, updateBankUI };
 
