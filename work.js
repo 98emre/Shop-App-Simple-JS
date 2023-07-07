@@ -7,7 +7,14 @@ import { getAmountOfLoan, setAmountOfLoan,getBankBalance, setBankBalance, update
 let payBalance = 0;
 
 
-let payElementContext = document.getElementById("payBalance");
+const payElementContext = document.getElementById("payBalance");
+const btnWork = document.getElementById("btn-handleWork");
+const btnTransfer = document.getElementById("btn-handleTransfer")
+const btnRepayLoan = document.getElementById("btn-handleRepayLoan");
+
+btnWork.addEventListener("click", handleWork);
+btnTransfer.addEventListener("click", handleTransfer);
+btnRepayLoan.addEventListener("click", handleRepayLoan);
 
 payElementContext.textContent = payBalance.toString();
 
@@ -15,12 +22,12 @@ function updateWorkUI() {
   payElementContext.textContent = payBalance.toString();
 }
 
-function work() {
+function handleWork() {
   payBalance += 100;
   updateWorkUI();
 }
 
-function transferPayBalanceToBank() {
+function handleTransfer() {
 
     if(getAmountOfLoan() > 0){
         const newBankBalanceValue = getBankBalance() + payBalance*0.9
@@ -44,7 +51,7 @@ function transferPayBalanceToBank() {
 }
 
 
-function repayLoan() {
+function handleRepayLoan() {
     const newLoanValue = getAmountOfLoan() - payBalance
 
     if(newLoanValue > 0){
@@ -69,11 +76,3 @@ function repayLoan() {
     updateBankUI()
 }
 
-let workButton = document.querySelector("#workButton");
-workButton.addEventListener("click", work);
-
-let transferButton = document.querySelector("#transferButton");
-transferButton.addEventListener("click", transferPayBalanceToBank);
-
-let repayLoanButton = document.querySelector("#repayLoanButton");
-repayLoanButton.addEventListener("click", repayLoan);

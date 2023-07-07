@@ -3,7 +3,7 @@
 
 const bankBalanceElement = document.getElementById("bankBalance");
 const amountOfLoanElement = document.getElementById("amountOfLoan");
-const btnGetLoanElement = document.getElementById("btn-getLoan")
+const btnGetLoanElement = document.getElementById("btn-handleGetLoan")
 
 btnGetLoanElement.addEventListener("click", handleGetLoan);
 
