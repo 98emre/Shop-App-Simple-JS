@@ -5,6 +5,9 @@ const bankBalanceElement = document.getElementById("bankBalance");
 const amountOfLoanElement = document.getElementById("amountOfLoan");
 const btnGetLoanElement = document.getElementById("btn-getLoan")
 
+btnGetLoanElement.addEventListener("click", handleGetLoan);
+
+
 let amountOfLoan = 0;
 let bankBalance = 0;
 
@@ -33,7 +36,7 @@ function updateBankUI(){
 updateBankUI();
 
 
-function getLoan() {
+function handleGetLoan() {
     if (amountOfLoan > 0) {
         alert("You already have a loan");
         return;
@@ -66,7 +69,6 @@ function getLoan() {
 
 
 
-btnGetLoanElement.addEventListener("click", getLoan);
 
 export { getAmountOfLoan, setAmountOfLoan, getBankBalance, setBankBalance, updateBankUI };
 
