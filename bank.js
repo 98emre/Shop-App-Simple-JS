@@ -11,6 +11,13 @@ btnGetLoanElement.addEventListener("click", handleGetLoan);
 let amountOfLoan = 0;
 let bankBalance = 0;
 
+function updateBankUI(){
+    bankBalanceElement.textContent = bankBalance.toString();
+    amountOfLoanElement.textContent = amountOfLoan.toString();
+}
+
+updateBankUI();
+
 function getBankBalance(){
     return bankBalance;
 }
@@ -26,14 +33,6 @@ function getAmountOfLoan(){
 function setAmountOfLoan(newLoanValue){
     amountOfLoan = newLoanValue
 }
-
-
-function updateBankUI(){
-    bankBalanceElement.textContent = bankBalance.toString();
-    amountOfLoanElement.textContent = amountOfLoan.toString();
-}
-
-updateBankUI();
 
 
 function handleGetLoan() {
@@ -68,8 +67,9 @@ function handleGetLoan() {
 }
 
 
-
-
-export { getAmountOfLoan, setAmountOfLoan, getBankBalance, setBankBalance, updateBankUI };
+export { getAmountOfLoan, setAmountOfLoan,
+        getBankBalance, setBankBalance, 
+        updateBankUI 
+    };
 
 
