@@ -2,8 +2,8 @@
 
 // computer.js
 
-import { fetchComputers,getComputerImageURL } from "./api.js";
-import { getBankBalance, setBankBalance, updateBankUI } from "./bank.js";
+import { fetchComputers,getComputerImageURL } from "../API/api.js";
+import { getBankBalance, setBankBalance, updateBankUI } from "../BankSection/bank.js";
 
 let computer = {
     id: 0,

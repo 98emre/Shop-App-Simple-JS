@@ -2,7 +2,7 @@
 
 // Work.js
 
-import { getAmountOfLoan, setAmountOfLoan,getBankBalance, setBankBalance, updateBankUI } from './bank.js';
+import { getAmountOfLoan, setAmountOfLoan,getBankBalance, setBankBalance, updateBankUI } from '../BankSection/bank.js';
 
 let payBalance = 0;
 

@@ -8,7 +8,7 @@ export const getComputerImageURL = () => URL
 
 export async function fetchComputers() {
     try {
-      const response = await fetch('./data.json');
+      const response = await fetch('../Database/data.json');
       const data = await response.json();
       return data;
     } catch (error) {
