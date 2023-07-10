@@ -1,6 +1,11 @@
 
 // Api.js
 
+const URL = "https://hickory-quilled-actress.glitch.me/"
+
+
+export const getComputerImageURL = () => URL 
+
 export async function fetchComputers() {
     try {
       const response = await fetch('./data.json');
@@ -11,4 +16,7 @@ export async function fetchComputers() {
       return [];
     }
   }
+
+
+
   
