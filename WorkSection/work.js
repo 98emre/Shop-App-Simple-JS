@@ -18,9 +18,8 @@ btnRepayLoan.addEventListener("click", handleRepayLoan);
 
 payElementContext.textContent = payBalance.toString();
 
-function updateWorkUI() {
-  payElementContext.textContent = payBalance.toString();
-}
+const updateWorkUI = () => payElementContext.textContent = payBalance.toString();
+
 
 function handleWork() {
   payBalance += 100;
