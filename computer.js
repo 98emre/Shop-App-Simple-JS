@@ -2,7 +2,7 @@
 
 // computer.js
 
-import { fetchComputers } from "./api.js";
+import { fetchComputers,getComputerImageURL } from "./api.js";
 import { getBankBalance, setBankBalance, updateBankUI } from "./bank.js";
 
 let computer = {
@@ -34,7 +34,7 @@ computerSelectElement.addEventListener("change", (event) => {
         computer.price = selectedComputer.price
         computer.description = selectedComputer.description
         computer.features = selectedComputer.specs
-        computer.image = `https://hickory-quilled-actress.glitch.me/${selectedComputer.image}` 
+        computer.image = `${getComputerImageURL()}${selectedComputer.image}` 
         
         updateComputerUI()
     }
@@ -76,9 +76,9 @@ function handleBuyComputer(){
         return;
     }
 
-    const newPrice = getBankBalance() - computer.price;
+    const newPrice = getBankBalance() - computer.price
     setBankBalance(newPrice);
-    updateBankUI();
+    updateBankUI()
     alert("You are now the owner of the new laptop!!")
 }   
   
