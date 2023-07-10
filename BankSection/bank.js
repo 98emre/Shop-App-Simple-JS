@@ -18,21 +18,12 @@ function updateBankUI(){
 
 updateBankUI();
 
-function getBankBalance(){
-    return bankBalance;
-}
+const getBankBalance = ()  => bankBalance;
+const setBankBalance = (newBankBalanceValue) => bankBalance = newBankBalanceValue
 
-function setBankBalance(newBankBalanceValue){
-    bankBalance = newBankBalanceValue
-}
+const getAmountOfLoan = () => amountOfLoan;
+const setAmountOfLoan = (newLoanValue) =>  amountOfLoan = newLoanValue
 
-function getAmountOfLoan(){
-    return amountOfLoan;
-}
-
-function setAmountOfLoan(newLoanValue){
-    amountOfLoan = newLoanValue
-}
 
 
 function handleGetLoan() {
@@ -70,9 +61,9 @@ function handleGetLoan() {
 }
 
 
-export { getAmountOfLoan, setAmountOfLoan,
+export { setAmountOfLoan, getAmountOfLoan,
         getBankBalance, setBankBalance, 
         updateBankUI 
-    };
+};
 
 
