@@ -31,7 +31,9 @@
                     <h3>Joe Banker</h3>
                     <p>Balance: <span id="bankBalance"></span> Kr</p>
                     <p>Loan: <span id="amountOfLoan"></span></p>
-                    <button id="btn-handleGetLoan" class="bank-button">Get a loan</button>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button id = "btn-handleGetLoan" type="button" class="btn btn-success btn-lg">Get a loan</button>
+                    </div>
                 </div>
             </div>
 
@@ -43,9 +45,11 @@
                 <div class="work-container">
                     <h3>Work</h3>
                     <p>Pay: <span id="payBalance"></span> Kr</p>
-                    <button id="btn-handleTransfer" class="transferToBank-button">Bank</button>
-                    <button id="btn-handleWork" class="work-button">Work</button>
-                    <button id="btn-handleRepayLoan" class="repayLoan-button" hidden>Repay Loan</button>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                          <button id="btn-handleTransfer" type="button" class="btn btn-warning btn-sm"><h6>Bank</h6></button>
+                          <button id="btn-handleWork" type="button" class="btn btn-primary btn-sm"><h6>Work</h6></button>
+                          <button id="btn-handleRepayLoan" class="btn btn-danger btn-sm" hidden>Repay Loan</button>
+                     </div>
                 </div>
             </div>
             <!-- Work Section-->
@@ -70,22 +74,22 @@
             <!-- Computer Section -->
             <div class="col-lg-16 col-sm-16">
                 <div class="computer-container">
-                    
+                    <h4>Select a computer</h4>
+
                     <div class="computer-image-container">
                         <img id="computerImage" class="computer-image" src="" alt="Missing a image">
                     </div>
-
+    
                     <div class="computer-details">
                         <h3><span id="computerTitle"></span></h3>
                         <p id="computerDescription"></p>
                     </div>
-
-                    <div >
+    
+                    <div class="d-grid gap-2">
                         <h5><span id="computerPrice"></span> Kr</h5>
+                        <button id="btn-handleBuyComputer" class="btn btn-info">BUY KNOW</button>
                     </div>
-
-                    <button id="btn-handleBuyComputer" class="computer-button">BUY NOW</button>                    
-                </div>
+                 </div>
             </div>
             <!-- Computer Section -->
 

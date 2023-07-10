@@ -65,7 +65,7 @@ function handleGetLoan() {
     bankBalance += parseInt(enterAmount);
     amountOfLoan += parseInt(enterAmount);
 
-    document.querySelector(".repayLoan-button").removeAttribute("hidden");
+    document.getElementById("btn-handleRepayLoan").removeAttribute("hidden");
     updateBankUI();
 }
 

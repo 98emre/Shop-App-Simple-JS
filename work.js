@@ -42,7 +42,7 @@ function handleTransfer() {
         setBankBalance(newBankBalanceValue)
 
         if(newLoanValue < 0){
-            document.querySelector(".repayLoan-button").setAttribute("hidden","");
+            document.getElementById("btn-handleRepayLoan").setAttribute("hidden","");
             setAmountOfLoan(0)
         }
     }
@@ -76,7 +76,7 @@ function handleRepayLoan() {
         setBankBalance(newBankBalanceValue)
         setAmountOfLoan(0)
         payBalance = 0;
-        document.querySelector(".repayLoan-button").setAttribute("hidden","");
+        document.getElementById("btn-handleRepayLoan").setAttribute("hidden","");
     } 
 
     else{

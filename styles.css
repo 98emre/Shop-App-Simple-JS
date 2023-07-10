@@ -4,7 +4,6 @@
     padding: 1px;
 }
 
-
 .headTitle {
     margin-left: 50px;
     margin-top: 10px;
@@ -13,53 +12,23 @@
 .bank-container {
     background-color: #f8f9fa; 
     padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
-    margin-top: 20px; 
+    border: 5px solid #ccc; 
+    text-align: center; 
+    margin-top: 10px; 
 }
-
-.bank-button {
-    background-color: #109717; 
-    border: 1px solid #ccc; 
-    margin-left: 20px; 
-}
-
 
 .work-container {
     background-color: #f8f9fa; 
     padding: 10px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
-    margin-top: 20px; 
-}
-
-.transferToBank-button {
-    background-color: #cbeb3f; 
-    border: 1px solid #ccc; 
-    padding: 5px; 
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.work-button {
-    background-color: #288eee; 
-    border: 1px solid #ccc; 
-    padding: 5px; 
-    margin-left: 20px;
-}
-
-
-.repayLoan-button {
-    background-color: #f7433c; 
-    border: 1px solid #ccc; 
-    padding: 5px; 
-    margin-left: 20px;
+    border: 5px solid #ccc; 
+    text-align: center; 
+    margin-top: 10px;
 }
 
 .selectLaptop-container {
     background-color: #f8f9fa; 
     padding: 10px; 
-    border: 1px solid #ccc; 
+    border: 5px solid #ccc; 
     text-align: left; 
     margin-top: 20px; 
 }
@@ -67,26 +36,20 @@
 .computer-container {
     background-color: #f8f9fa; 
     padding: 10px; 
-    border: 1px solid #ccc; 
+    border: 5px solid #ccc; 
     text-align: left; 
     margin-top: 20px; 
+    margin-bottom: 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between;}
+    justify-content: space-between;
+}
 
 .computer-image {
     width: 200px; 
     height: auto;
 }
 
-
-.computer-button {
-    background-color: #30cbfa; 
-    border: 1px solid #ccc; 
-    padding: 10px; 
-    margin-left: 20px;
-    margin-right: 20px;
-}
 
 .computer-features-title {
     font-weight: bold;
@@ -97,13 +60,13 @@
 .computer-container {
     display: flex;
     align-items: flex-start;
-  }
+}
   
-  .computer-image-container {
+.computer-image-container {
     margin-right: 20px;
-  }
+}
   
-  .computer-details {
+.computer-details {
     margin-left: 20px;
     margin-right: 20px;
-  }
+}
