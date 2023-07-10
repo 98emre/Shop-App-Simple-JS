@@ -41,26 +41,29 @@ function handleGetLoan() {
         return;
     }
 
-    var enterAmount = prompt("Enter the loan: ");
+    let enterAmount = prompt("Enter the loan: ");
     
     if (enterAmount === null) {
         return;
     }
-
-    enterAmount = parseInt(enterAmount);
-
+    
     if (isNaN(enterAmount) || enterAmount <= 0) {
-        alert("Invalid input for the loan");
+        alert(`Error invalid input`);
         return;
     }
 
-    if (enterAmount > bankBalance * 2) {
-        alert("Loan cannot exceed double your balance");
+    if(bankBalance === 0){
+        alert("You have no money in the bank, go work")
         return;
     }
 
-    bankBalance += enterAmount;
-    amountOfLoan += enterAmount;
+    if (parseInt(enterAmount) > bankBalance * 2) {
+        alert(`Loan cannot to be more than ${bankBalance*2} Kr`);
+        return;
+    }
+
+    bankBalance += parseInt(enterAmount);
+    amountOfLoan += parseInt(enterAmount);
 
     document.querySelector(".repayLoan-button").removeAttribute("hidden");
     updateBankUI();
