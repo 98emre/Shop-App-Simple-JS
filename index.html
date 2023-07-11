@@ -9,11 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
-
-    <script src="./BankSection/bank.js" type="module"></script>
-    <script src="./WorkSection/work.js" type="module"></script>
-    <script src="./API/api.js" type="module"></script>
-    <script src="./ComputerSection/computer.js" type="module"></script>
+    <script src="./main.js" type="module"></script>
 </head>
 
 <body> 
@@ -36,7 +32,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Bank Section-->
 
 
@@ -59,10 +54,10 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="selectLaptop-container">
                     <h3>Laptops</h3>
-                    <select id="computerSelect" class="form-control form-control-sm">
-                        <option hidden >Select a laptop</option>
-                    </select>
-
+                    <select id="selectComputer" class="form-control form-control-sm">
+                        <option hidden>Select a laptop</option>
+                      </select>
+                      
                     <br/>
                     <h5 hidden class= "computer-features-title">Features</h5>
                     <p id="computerFeatures"></p>
@@ -73,8 +68,7 @@
 
             <!-- Computer Section -->
             <div class="col-lg-16 col-sm-16">
-                <div class="computer-container">
-
+                <div  class="computer-container">
                     <div class="computer-image-container">
                         <img id="computerImage" class="computer-image" src="" alt="Missing a image">
                     </div>
