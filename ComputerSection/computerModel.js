@@ -1,22 +1,27 @@
-// computer.js
 
-export class ComputerModel {
-  constructor() {
-    this.computer = {
-      id: 0,
-      title: "",
-      price: 0,
-      description: "",
-      features: [],
-      image: "",
-    };
 
-    this.data = [];
-  }
+// Computer Model
 
-  setComputer = (newComputer) => this.computer = newComputer;
-  getComputer = () => this.computer;
+let computer = {
+  id: 0,
+  title: "",
+  price: 0,
+  description: "",
+  features: [],
+  image: "",
+};
 
-  setData = (newData) => this.data = newData;
-  getData = () => this.data;
+let computerDataInfos = [];
+
+const setComputer = (newComputer) => computer = newComputer;
+const getComputer = () => computer;
+
+const setComputerDataInfos = (newComputerDataInfos) => computerDataInfos = newComputerDataInfos;
+const getComputerDataInfos = () => computerDataInfos;
+
+const computerModel = {
+  setComputer, getComputer,
+  setComputerDataInfos, getComputerDataInfos
 }
+
+export default computerModel

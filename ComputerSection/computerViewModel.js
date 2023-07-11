@@ -1,90 +1,89 @@
 
 
-import { ComputerModel } from "./computerModel.js";
+import computerModel from "./computerModel.js"
+import bankModel from "../BankSection/bankModel.js";
+import { displayBankUI } from "../BankSection/bankViewModel.js";
+
 import { fetchComputers, getComputerImageURL } from "../API/api.js";
 
-export class ComputerViewModel {
+  const computerNameElement = document.getElementById("computerTitle");
+  const computerPriceElement = document.getElementById("computerPrice");
+  const computerDescriptionElement = document.getElementById("computerDescription");
+  const computerFeaturesElement = document.getElementById("computerFeatures");
+  const computerImageElement = document.getElementById("computerImage");
+ 
+  const selectComputerElement = document.getElementById("selectComputer");
+  const btnBuyComputerElement = document.getElementById("btn-handleBuyComputer");
 
-  constructor(bankViewModel) {
-    this.bankViewModel = bankViewModel;
-    this.computerModel = new ComputerModel();
+  btnBuyComputerElement.addEventListener("click", () => handleBuyComputerClick());
+  selectComputerElement.addEventListener("change", (event) => handleComputerSelect(event));
 
-    this.computerNameElement = document.getElementById("computerTitle");
-    this.computerPriceElement = document.getElementById("computerPrice");
-    this.computerDescriptionElement = document.getElementById("computerDescription");
-    this.computerFeaturesElement = document.getElementById("computerFeatures");
-    this.computerImageElement = document.getElementById("computerImage");
-    this.selectComputerElement = document.getElementById("selectComputer");
-    this.btnBuyComputerElement = document.getElementById("btn-handleBuyComputer");
+  displayComputerUI();
+  fetchAndPopulate();
 
-    this.btnBuyComputerElement.addEventListener("click", () => this.handleBuyComputer());
-    this.selectComputerElement.addEventListener("change", (event) => this.handleComputerSelect(event));
-
-    this.fetchAndPopulate();
-    this.updateComputerUI()
-  }
-
-  updateComputerUI() {
-    const computer = this.computerModel.getComputer();
+  function displayComputerUI() {
+    const computer = computerModel.getComputer()
    
-    this.computerNameElement.textContent = computer.title.toString();
-    this.computerPriceElement.textContent = computer.price.toString();
-    this.computerDescriptionElement.textContent = computer.description.toString();
-    this.computerImageElement.src = computer.image.toString();
+    computerNameElement.innerHTML =  `${computer.title}`;
+    computerPriceElement.innerHTML = `${computer.price} Kr`;
+    computerDescriptionElement.innerHTML = `${computer.description}`;
+    computerImageElement.src = `${computer.image}`;
 
-    this.computerFeaturesElement.innerHTML = ""; // Make sure to reset
+    computerFeaturesElement.innerHTML = ""; // Make sure to reset
 
     computer.features.forEach((feature) => {
       const featureElement = document.createElement("li");
-      featureElement.textContent = feature;
-      this.computerFeaturesElement.appendChild(featureElement);
+      featureElement.innerHTML = feature;
+      computerFeaturesElement.appendChild(featureElement);
     });
 
     if (computer.features.length > 0) {
       document.querySelector(".computer-features-title").removeAttribute("hidden");
     }
+    
+    displayBankUI()
   }
 
-  fetchAndPopulate() {
+  function fetchAndPopulate() {
     fetchComputers()
       .then((result) => {
-        this.computerModel.setData(result);
+        computerModel.setComputerDataInfos(result);
 
         result.forEach((computer) => {
           const optionElement = document.createElement("option");
           optionElement.value = computer.id;
-          optionElement.textContent = computer.title;
-          this.selectComputerElement.appendChild(optionElement);
+          optionElement.innerHTML = computer.title;
+          selectComputerElement.appendChild(optionElement);
         });
       })
       .catch((error) => console.error("Error fetching computers:", error));
   }
   
 
-  handleBuyComputer() {
-    const computer = this.computerModel.getComputer();
-    const bankModel = this.bankViewModel.getBankModel();
+  function handleBuyComputerClick() {
+    const computerPrice = computerModel.getComputer().price;
+    const bankBalance = bankModel.getBankBalance();
 
-    if (computer.price <= 0) {
+    if (computerPrice <= 0) {
       alert("You must select a computer");
       return;
     }
 
-    if (computer.price > bankModel.getBankBalance()) {
+    if (computerPrice > bankBalance) {
       alert("You need more money");
       return;
     }
 
-    //const newPrice = bankBalance - computer.price;
-    bankModel.setBankBalance(bankModel.getBankBalance() - computer.price);
-    this.bankViewModel.updateBankUI();
+    bankModel.setBankBalance(bankBalance - computerPrice);
+    displayComputerUI()
     alert("You are now the owner of the new laptop!!");
   }
 
-  handleComputerSelect(event){
-    const computer = this.computerModel.getComputer();
+  function handleComputerSelect(event){
+    const computer = computerModel.getComputer();
+    const computers = computerModel.getComputerDataInfos();
 
-    const selectedComputer = this.computerModel.getData().find((item) => item.id === parseInt(event.target.value));
+    const selectedComputer = computers.find((item) => item.id === parseInt(event.target.value));
 
     if (selectedComputer != null || selectedComputer != undefined) {
       computer.id = selectedComputer.id;
@@ -95,6 +94,6 @@ export class ComputerViewModel {
       computer.image = `${getComputerImageURL()}${selectedComputer.image}`;
     }
 
-    this.updateComputerUI()      
+    displayComputerUI()      
   }
-}
+
