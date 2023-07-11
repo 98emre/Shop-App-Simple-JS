@@ -1,18 +1,21 @@
 
 // Bank.js
 
-export class BankModel {
 
-    constructor(){
-        this.bankBalance = 0;
-        this.amountOfLoan = 0;
-    }
+let bankBalance = 0;
+let amountOfLoan = 0;
 
-    getBankBalance = ()  => this.bankBalance;
-    setBankBalance = (newBankBalanceValue) => this.bankBalance = newBankBalanceValue
+const getBankBalance = () => bankBalance;
+const setBankBalance = (newBankBalanceValue) => bankBalance = newBankBalanceValue;
+const getAmountOfLoan = () => amountOfLoan;
+const setAmountOfLoan = (newLoanValue) => amountOfLoan = newLoanValue;
 
-    getAmountOfLoan = () => this.amountOfLoan;
-    setAmountOfLoan = (newLoanValue) =>  this.amountOfLoan = newLoanValue
-}
+
+const bankModel = {
+   getBankBalance, setBankBalance,
+   getAmountOfLoan, setAmountOfLoan
+};
+
+export default bankModel;
 
 
