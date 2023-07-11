@@ -3,13 +3,13 @@
 // Work Model
 
 
-export class WorkModel {
+let payBalance = 0;
 
-    constructor() {
-        this.payBalance = 0;
-    }
+const getPayBalance = () => payBalance
+const setPayBalance = (newPayBalanceValue) => payBalance = newPayBalanceValue
 
-    getPayBalance = () => this.payBalance
-    setPayBalance = (newPayBalanceValue) => this.payBalance = newPayBalanceValue
+const workModel = {
+    getPayBalance,setPayBalance
 }
 
+export default workModel;

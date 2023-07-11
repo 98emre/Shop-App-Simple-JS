@@ -1,93 +1,88 @@
-// Work.js
 
-import { WorkModel } from "./workModel.js";
 
-export class WorkViewModel {
-  constructor(bankViewModel) {
-    this.workModel = new WorkModel();
-    this.bankViewModel = bankViewModel;
+// Work View Model
 
-    this.payElementContext = document.getElementById("payBalance");
-    this.btnWork = document.getElementById("btn-handleWork");
-    this.btnTransfer = document.getElementById("btn-handleTransfer");
-    this.btnRepayLoan = document.getElementById("btn-handleRepayLoan");
+import workModel from "./workModel.js";
+import bankModel from "../BankSection/bankModel.js";
+import { displayBankUI } from "../BankSection/bankViewModel.js";
 
-    this.btnWork.addEventListener("click", () => this.handleWork());
-    this.btnTransfer.addEventListener("click", () => this.handleTransfer());
-    this.btnRepayLoan.addEventListener("click", () => this.handleRepayLoan());
+const payBalanceElement = document.getElementById("payBalance");
+const btnWork = document.getElementById("btn-handleWork");
+const btnTransfer = document.getElementById("btn-handleTransfer");
+const btnRepayLoan = document.getElementById("btn-handleRepayLoan");
 
-    this.updateWorkUI();
+btnWork.addEventListener("click", () => handleWorkClick());
+btnTransfer.addEventListener("click", () => handleTransferClick());
+btnRepayLoan.addEventListener("click", () => handleRepayLoanClick());
+
+document.addEventListener("DOMContentLoaded", () =>  displayWorkUI() );
+
+const displayWorkUI = () => (payBalanceElement.innerHTML = `Pay: ${workModel.getPayBalance()} kr`);
+
+function handleWorkClick() {
+  workModel.setPayBalance(workModel.getPayBalance() + 100);
+  displayWorkUI();
+}
+
+function handleTransferClick() {
+  const getPayBalance = workModel.getPayBalance();
+
+  if (getPayBalance <= 0) {
+    alert("You have no money, go work");
+    return;
   }
 
-  updateWorkUI = () => {
-    this.payElementContext.textContent = this.workModel.getPayBalance().toString();
-    this.bankViewModel.updateBankUI();
-  };
+  if (bankModel.getAmountOfLoan() > 0) {
+    const newBankBalanceValue = bankModel.getBankBalance() + getPayBalance * 0.9;
+    const newLoanValue = bankModel.getAmountOfLoan() - getPayBalance * 0.1;
 
-  handleWork() {
-    this.workModel.setPayBalance(this.workModel.getPayBalance() + 100);
-    this.updateWorkUI();
-  }
-
-  handleTransfer() {
-    const bankModel = this.bankViewModel.getBankModel();
-    const getPayBalance = this.workModel.getPayBalance();
-
-    if (getPayBalance <= 0) {
-      alert("You have no money, go work");
-      return;
-    }
-
-    if (bankModel.getAmountOfLoan() > 0) {
-      const newBankBalanceValue = bankModel.getBankBalance() + getPayBalance * 0.9;
-      const newLoanValue = bankModel.getAmountOfLoan() - getPayBalance * 0.1;
-
-      bankModel.setAmountOfLoan(newLoanValue);
-      bankModel.setBankBalance(newBankBalanceValue);
-
-      if (newLoanValue <= 0) {
-        document.getElementById("btn-handleRepayLoan").setAttribute("hidden", "");
-        bankModel.setAmountOfLoan(0);
-      }
-    } 
-    
-    else {
-      bankModel.setBankBalance(bankModel.getBankBalance() + getPayBalance);
-    }
-
-    this.workModel.setPayBalance(0);
-    this.updateWorkUI();
-    this.bankViewModel.updateBankUI();
-  }
-
-  handleRepayLoan() {
-    const bankModel = this.bankViewModel.getBankModel();
-    const newLoanValue = bankModel.getAmountOfLoan() - this.workModel.getPayBalance();
-
-    if (this.workModel.getPayBalance() <= 0) {
-      alert("You have no money, go work");
-      return;
-    }
-
-    if (newLoanValue > 0) {
-      this.workModel.setPayBalance(0);
-    }
+    bankModel.setAmountOfLoan(newLoanValue);
+    bankModel.setBankBalance(newBankBalanceValue);
 
     if (newLoanValue <= 0) {
-      this.workModel.setPayBalance(this.workModel.getPayBalance() - bankModel.getAmountOfLoan());
-      const newBankBalanceValue = bankModel.getBankBalance() + this.workModel.getPayBalance();
-
-      bankModel.setBankBalance(newBankBalanceValue);
-      bankModel.setAmountOfLoan(0);
-      this.workModel.setPayBalance(0);
-
       document.getElementById("btn-handleRepayLoan").setAttribute("hidden", "");
-    } 
-    
-    else {
-      bankModel.setAmountOfLoan(newLoanValue);
+      bankModel.setAmountOfLoan(0);
+      document.getElementById("amountOfLoan").setAttribute("hidden","")
     }
-
-    this.updateWorkUI();
+  } else {
+    bankModel.setBankBalance(bankModel.getBankBalance() + getPayBalance);
   }
+
+  workModel.setPayBalance(0);
+
+  displayWorkUI();
+  displayBankUI();
+}
+
+function handleRepayLoanClick() {
+  const newLoanValue = bankModel.getAmountOfLoan() - workModel.getPayBalance();
+
+  if (workModel.getPayBalance() <= 0) {
+    alert("You have no money, go work");
+    return;
+  }
+
+  if (newLoanValue > 0) {
+    workModel.setPayBalance(0);
+  }
+
+  if (newLoanValue <= 0) {
+    workModel.setPayBalance(
+      workModel.getPayBalance() - bankModel.getAmountOfLoan()
+    );
+    const newBankBalanceValue =
+      bankModel.getBankBalance() + workModel.getPayBalance();
+
+    bankModel.setBankBalance(newBankBalanceValue);
+    bankModel.setAmountOfLoan(0);
+    workModel.setPayBalance(0);
+
+    document.getElementById("btn-handleRepayLoan").setAttribute("hidden", "");
+    document.getElementById("amountOfLoan").setAttribute("hidden","")
+  } else {
+    bankModel.setAmountOfLoan(newLoanValue);
+  }
+
+  displayBankUI();
+  displayWorkUI();
 }
